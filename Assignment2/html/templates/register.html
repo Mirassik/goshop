@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - GoShopAuthentication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+
+<div class="bg-white p-8 rounded shadow-md w-96">
+    <h1 class="text-2xl font-semibold mb-6">Register</h1>
+
+    <form id="registerForm">
+        <div class="mb-4">
+            <label for="username" class="block text-gray-600 text-sm font-medium mb-2">Username</label>
+            <input type="text" id="username" name="username" class="w-full border rounded-md py-2 px-3" required>
+        </div>
+
+
+        <div class="mb-4">
+            <label for="password" class="block text-gray-600 text-sm font-medium mb-2">Password</label>
+            <input type="password" id="password" name="password" class="w-full border rounded-md py-2 px-3" required>
+        </div>
+
+        <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-md">Register</button>
+    </form>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const formDataObject = {};
+            formData.forEach((value, key) => {
+                formDataObject[key] = value;
+            });
+            const jsonData = JSON.stringify(formDataObject);
+
+            fetch('/api/register', {
+                method: 'POST',
+                body: jsonData,
+            })
+                .then(response => {
+                    if (response.status === 201) {
+                        window.location.href = '/index.html';
+                    }
+                })
+                .catch(error => {
+                    alert("ERROR APPEARED")
+                });
+        });
+    </script>
+</div>
+</body>
+</html>

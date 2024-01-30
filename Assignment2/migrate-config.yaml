@@ -1,0 +1,2 @@
+database: "postgres"
+connectionString: "postgres://golang:123@localhost:5432/goshop?sslmode=disable"

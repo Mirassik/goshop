@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+
+<div class="text-center">
+    <h1 class="text-4xl font-semibold mb-4">Logging out...</h1>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Fetch /api/logout
+        fetch('/api/logout', {
+            method: 'GET',
+            credentials: 'include',
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Logout successful');
+                    // Redirect to /index.html after successful logout
+                    window.location.href = '/index.html';
+                } else {
+                    console.error('Logout failed');
+                    // Handle logout failure, display error message, or other actions
+                }
+            })
+            .catch(error => {
+                console.error('Logout error:', error);
+                // Handle logout error, display error message, or other actions
+            });
+    });
+</script>
+
+</body>
+</html>
