@@ -5,6 +5,7 @@
 
 ## Participants:
 1. Keneskhan Miras
+2. Karsybai Baibolat
 
 ## Screenshot:
 ![GoShop](image.png)
