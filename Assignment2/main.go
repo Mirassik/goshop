@@ -61,6 +61,14 @@ func main() {
 			return
 		}
 	}).Methods("GET")
+
+	router.HandleFunc("/index2.html", func(w http.ResponseWriter, r *http.Request) {
+		err := middlewares.Templates.ExecuteTemplate(w, "logout.html", nil)
+		if err != nil {
+			http.Error(w, "Error rendering template", http.StatusInternalServerError)
+			return
+		}
+	}).Methods("GET")
 	// END HTML FILES ROUTING
 
 	port := os.Getenv("PORT")
